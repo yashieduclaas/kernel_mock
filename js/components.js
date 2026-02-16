@@ -6,6 +6,11 @@
 
 const Components = (() => {
 
+    // Sidebar state tracking
+    const sidebarState = {
+        openGroups: new Set() // Track which groups are open
+    };
+
     // Fluent UI SVG icons for each module group (parent-level)
     const MODULE_SVG_ICONS = {
         scc: `<svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 6.5V11.5C3 17.09 6.84 22.28 12 23.5C17.16 22.28 21 17.09 21 11.5V6.5L12 2ZM12 4.18L19 7.63V11.5C19 16.05 15.97 20.22 12 21.44C8.03 20.22 5 16.05 5 11.5V7.63L12 4.18ZM10.29 10.71L8.71 12.29L11 14.59L15.29 10.29L13.71 8.71L11 11.41L10.29 10.71Z" stroke="currentColor" stroke-width="0.3" fill="currentColor"/></svg>`,
@@ -186,15 +191,16 @@ const Components = (() => {
     // ---------- Left Sidebar — Accordion (Entra-style) ----------
     function renderSidebar(activeItem) {
         const sidebar = document.getElementById('left-sidebar');
+        const wasCollapsed = sidebar.classList.contains('collapsed');
         sidebar.classList.remove('d-none');
-        sidebar.className = 'left-sidebar';
+        sidebar.className = wasCollapsed ? 'left-sidebar collapsed' : 'left-sidebar';
 
         const activeModule = getModuleForPage(activeItem);
 
         // Build accordion groups for all modules
         const shortLabels = { scc: 'SCC', acc: 'ACC', helpdesk: 'Helpdesk' };
         const groupsHtml = Object.entries(MODULE_NAV).map(([key, mod]) => {
-            const isOpen = activeModule === key;
+            const isOpen = sidebarState.openGroups.has(key); // Preserve state
             const parentIcon = MODULE_SVG_ICONS[key] || '';
             const shortLabel = shortLabels[key] || '';
 
@@ -240,7 +246,15 @@ const Components = (() => {
     // ---------- Accordion toggle (user-driven only) ----------
     function toggleAccordion(parentEl) {
         const group = parentEl.parentElement;
-        group.classList.toggle('open');
+        const groupKey = group.getAttribute('data-group');
+
+        if (sidebarState.openGroups.has(groupKey)) {
+            sidebarState.openGroups.delete(groupKey);
+            group.classList.remove('open');
+        } else {
+            sidebarState.openGroups.add(groupKey);
+            group.classList.add('open');
+        }
     }
 
     function hideSidebar() {
