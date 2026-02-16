@@ -30,7 +30,7 @@ const UserRoleAssignPage = (() => {
                 <div class="page-header">
                     <div>
                         <h1>Security User Role Assignment</h1>
-                        <p class="page-subtitle">Assign security roles to users for specific solutions and modules</p>
+                        <p class="page-subtitle">Assign Security Roles to Users for Specific Solutions and Modules</p>
                     </div>
                     <button class="btn-primary" onclick="UserRoleAssignPage.showAssignModal()">
                         <i class="fas fa-plus"></i> Assign Role to User
@@ -40,7 +40,7 @@ const UserRoleAssignPage = (() => {
                 <div class="data-table-wrapper">
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search by user, role, solution, module, reason, or assigned by...">
+                        <input type="text" placeholder="Search by User, Role, Solution, Module, Reason, or Assigned By...">
                     </div>
 
                     <div class="filter-tabs">
@@ -64,10 +64,10 @@ const UserRoleAssignPage = (() => {
                         </thead>
                         <tbody>
                             ${assignments.map(a => {
-                                const mod = modules.find(m => m.solution_module_id === a.solution_module_id);
-                                const role = roles.find(r => r.sec_role_id === a.sec_role_id);
-                                const user = Store.getById('security_users', 'entra_email_id', a.entra_email_id);
-                                return `
+            const mod = modules.find(m => m.solution_module_id === a.solution_module_id);
+            const role = roles.find(r => r.sec_role_id === a.sec_role_id);
+            const user = Store.getById('security_users', 'entra_email_id', a.entra_email_id);
+            return `
                                     <tr>
                                         <td class="actions-cell">
                                             <button class="icon-btn edit" onclick="UserRoleAssignPage.showEditModal('${a.id}')" title="Edit"><i class="fas fa-pen"></i></button>
@@ -91,7 +91,7 @@ const UserRoleAssignPage = (() => {
                                         <td><span class="status-badge ${a.is_active ? 'active' : 'inactive'}">${a.is_active ? 'Active' : 'Inactive'}</span></td>
                                     </tr>
                                 `;
-                            }).join('')}
+        }).join('')}
                         </tbody>
                     </table>
                     <div class="table-footer">Showing ${assignments.length} of ${Store.getAll('user_roles').length} user role assignments</div>
@@ -275,7 +275,7 @@ const UserRoleAssignPage = (() => {
         if (!isoStr) return '—';
         const d = new Date(isoStr);
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ', ' +
-               d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
     }
 
     return { render, setFilter, showAssignModal, showEditModal, onSolChange, onModChange, saveAssignment, updateAssignment, deleteAssignment };

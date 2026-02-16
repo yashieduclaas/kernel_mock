@@ -22,7 +22,7 @@ const ModuleMgmtPage = (() => {
                 <div class="page-header">
                     <div>
                         <h1>Module Management System</h1>
-                        <p class="page-subtitle">Manage your solutions and modules</p>
+                        <p class="page-subtitle">Manage your Solutions and Modules</p>
                     </div>
                     <button class="btn-primary" onclick="ModuleMgmtPage.showAddModal()">
                         <i class="fas fa-plus"></i> Add New Module
@@ -132,7 +132,7 @@ const ModuleMgmtPage = (() => {
         Components.showModal('Add New Module', body, footer);
 
         // Char counter
-        document.getElementById('f-mod-desc').addEventListener('input', function() {
+        document.getElementById('f-mod-desc').addEventListener('input', function () {
             this.nextElementSibling.textContent = this.value.length + '/255';
         });
     }

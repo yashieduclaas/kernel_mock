@@ -24,7 +24,7 @@ const RoleMgmtPage = (() => {
                 <div class="page-header">
                     <div>
                         <h1>Security Role Management</h1>
-                        <p class="page-subtitle">Manage security roles for solutions and modules</p>
+                        <p class="page-subtitle">Manage Security Roles for Solutions and Modules</p>
                     </div>
                     <button class="btn-primary" onclick="RoleMgmtPage.showAddModal()">
                         <i class="fas fa-plus"></i> Add New Role
@@ -34,7 +34,7 @@ const RoleMgmtPage = (() => {
                 <div class="data-table-wrapper">
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search roles by name, code, solution, or module...">
+                        <input type="text" placeholder="Search Roles by Name, Code, Solution, or Module...">
                     </div>
 
                     <table class="data-table">
@@ -51,12 +51,12 @@ const RoleMgmtPage = (() => {
                         </thead>
                         <tbody>
                             ${roles.map(r => {
-                                const mod = modules.find(m => m.solution_module_id === r.solution_module_id);
-                                const solCode = mod ? mod.solution_code : '—';
-                                const solName = mod ? mod.solution_name : '';
-                                const modCode = mod ? mod.module_code : '—';
-                                const modName = mod ? mod.module_name : '';
-                                return `
+            const mod = modules.find(m => m.solution_module_id === r.solution_module_id);
+            const solCode = mod ? mod.solution_code : '—';
+            const solName = mod ? mod.solution_name : '';
+            const modCode = mod ? mod.module_code : '—';
+            const modName = mod ? mod.module_name : '';
+            return `
                                     <tr>
                                         <td>${solCode}<br><small class="text-muted">${solName}</small></td>
                                         <td>${modCode}<br><small class="text-muted">${modName}</small></td>
@@ -70,7 +70,7 @@ const RoleMgmtPage = (() => {
                                         </td>
                                     </tr>
                                 `;
-                            }).join('')}
+        }).join('')}
                         </tbody>
                     </table>
                     <div class="table-footer">Showing ${roles.length} of ${roles.length} security roles</div>

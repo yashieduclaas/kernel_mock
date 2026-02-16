@@ -23,7 +23,7 @@ const AuditLogsPage = (() => {
                 <div class="page-header">
                     <div>
                         <h1>Audit Log Viewer</h1>
-                        <p class="page-subtitle">Monitor user sessions, login attempts, and system actions</p>
+                        <p class="page-subtitle">Monitor User Sessions, Login Attempts, and System Actions</p>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@ const AuditLogsPage = (() => {
             <div class="data-table-wrapper">
                 <div class="search-bar">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search by user, email, IP address, device, module, or session token...">
+                    <input type="text" placeholder="Search by User, Email, IP Address, Device, Module, or Session Token...">
                 </div>
 
                 <div class="filter-tabs">
@@ -80,10 +80,10 @@ const AuditLogsPage = (() => {
                     </thead>
                     <tbody>
                         ${sessions.map(s => {
-                            const mod = modules.find(m => m.solution_module_id === s.solution_module_id);
-                            const user = Store.getById('security_users', 'entra_email_id', s.entra_email_id);
-                            const duration = getDuration(s.session_start_time, s.session_end_time);
-                            return `
+            const mod = modules.find(m => m.solution_module_id === s.solution_module_id);
+            const user = Store.getById('security_users', 'entra_email_id', s.entra_email_id);
+            const duration = getDuration(s.session_start_time, s.session_end_time);
+            return `
                                 <tr>
                                     <td>
                                         <strong>${user ? user.display_name : s.user_id}</strong><br>
@@ -100,7 +100,7 @@ const AuditLogsPage = (() => {
                                     <td><span class="status-badge ${s.is_success ? 'active' : 'failed'}">${s.is_success ? 'Success' : 'Failed'}</span></td>
                                 </tr>
                             `;
-                        }).join('')}
+        }).join('')}
                     </tbody>
                 </table>
                 <div class="table-footer">Showing ${sessions.length} of ${Store.getAll('audit_sessions').length} session logs</div>
@@ -116,7 +116,7 @@ const AuditLogsPage = (() => {
             <div class="data-table-wrapper">
                 <div class="search-bar">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search by user, action, permission code, or status...">
+                    <input type="text" placeholder="Search by User, Action, Permission Code, or Status...">
                 </div>
 
                 <table class="data-table">
@@ -133,9 +133,9 @@ const AuditLogsPage = (() => {
                     </thead>
                     <tbody>
                         ${actions.map(a => {
-                            const mod = modules.find(m => m.solution_module_id === a.solution_module_id);
-                            const user = Store.getById('security_users', 'entra_email_id', a.entra_email_id);
-                            return `
+            const mod = modules.find(m => m.solution_module_id === a.solution_module_id);
+            const user = Store.getById('security_users', 'entra_email_id', a.entra_email_id);
+            return `
                                 <tr>
                                     <td>
                                         <strong>${user ? user.display_name : a.entra_email_id}</strong><br>
@@ -149,7 +149,7 @@ const AuditLogsPage = (() => {
                                     <td class="desc-cell">${a.additional_info ? a.additional_info.substring(0, 50) + '...' : '—'}</td>
                                 </tr>
                             `;
-                        }).join('')}
+        }).join('')}
                     </tbody>
                 </table>
                 <div class="table-footer">Showing ${actions.length} of ${actions.length} action logs</div>
@@ -181,7 +181,7 @@ const AuditLogsPage = (() => {
         if (!isoStr) return '—';
         const d = new Date(isoStr);
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ', ' +
-               d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
     return { render, setTab, setSessionFilter };

@@ -56,7 +56,7 @@ const SCCDashboardPage = (() => {
                     <div class="scc-dash-header">
                         <div>
                             <h1 class="scc-dash-title"><i class="fas fa-shield-halved"></i> Security Control Center</h1>
-                            <p class="scc-dash-subtitle">Security analytics overview — users, roles, sessions &amp; audit activity</p>
+                            <p class="scc-dash-subtitle">Security Analytics Overview — Users, Roles, Sessions &amp; Audit Activity</p>
                         </div>
                         <div class="scc-dash-score-wrap">
                             <div class="scc-compliance-ring" style="--score:${complianceScore}">

@@ -33,7 +33,7 @@ const UserProfilePage = (() => {
                 <div class="page-header">
                     <div>
                         <h1>User Profile Enrichment</h1>
-                        <p class="page-subtitle">Manage user profiles and access control</p>
+                        <p class="page-subtitle">Manage User Profiles and Access Control</p>
                     </div>
                     <button class="btn-primary" onclick="UserProfilePage.showAddModal()">
                         <i class="fas fa-plus"></i> Add New User
@@ -47,7 +47,7 @@ const UserProfilePage = (() => {
                     </div>
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search by name, email, role, manager, or Entra ID..." value="${searchQuery}" oninput="UserProfilePage.handleSearch(this.value)">
+                        <input type="text" placeholder="Search by Name, Email, Role, Manager, or Entra ID..." value="${searchQuery}" oninput="UserProfilePage.handleSearch(this.value)">
                     </div>
 
                     <table class="data-table">

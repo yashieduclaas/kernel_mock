@@ -108,7 +108,7 @@ const Components = (() => {
             <div class="nav-search-wrapper">
                 <div class="nav-search-bar">
                     <i class="fas fa-search nav-search-icon"></i>
-                    <input type="text" class="nav-search-input" placeholder="Search modules..." aria-label="Search modules">
+                    <input type="text" class="nav-search-input" placeholder="Search Modules..." aria-label="Search Modules">
                     <span class="nav-search-role-badge"><i class="fas fa-user"></i> ${user.role_label}</span>
                 </div>
             </div>`;

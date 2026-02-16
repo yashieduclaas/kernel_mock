@@ -48,7 +48,7 @@ const PlaceholderPage = (() => {
         'hd-access-request': {
             icon: 'fa-key',
             title: 'Access Requests',
-            subtitle: 'Self-service access request portal for users to request roles on solutions and modules.',
+            subtitle: 'Self-service access request portal for users to request roles on Solutions and Modules.',
             features: ['Self-Service Access Request', 'Module Admin Notification Routing', 'Request Status Tracking'],
             context: 'kernel'
         },
