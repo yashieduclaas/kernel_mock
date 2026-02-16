@@ -87,73 +87,100 @@ const Components = (() => {
         const navEl = document.getElementById('top-navbar');
         navEl.className = 'top-nav';
 
-        if (context === 'ecc') {
-            navEl.innerHTML = `
-                <div class="nav-left">
-                    <div class="nav-brand" onclick="Router.navigate('ecc')">
-                        <span class="brand-c">C</span><span class="brand-l">L</span><span class="brand-a1">a</span><span class="brand-a2">a</span><span class="brand-s1">S</span><span class="brand-2">2</span><span class="brand-s2">S</span><span class="brand-a3">a</span><span class="brand-a4">a</span><span class="brand-s3">S</span>
+        // CLaaS2SaaS brand (always navigates to ECC landing)
+        const brandHtml = `
+            <div class="nav-brand" onclick="Router.navigate('ecc')">
+                <span class="brand-c">C</span><span class="brand-l">L</span><span class="brand-a1">a</span><span class="brand-a2">a</span><span class="brand-s1">S</span><span class="brand-2">2</span><span class="brand-s2">S</span><span class="brand-a3">a</span><span class="brand-a4">a</span><span class="brand-s3">S</span>
+            </div>`;
+
+        // Context label (always with separator)
+        const contextLabel = context === 'ecc'
+            ? '<span class="nav-separator">|</span><span class="nav-context-label">Enterprise Control Centre</span>'
+            : '<span class="nav-separator">|</span><span class="nav-context-label" style="cursor:pointer" onclick="Router.navigate(\'kernel-dashboard\')">Kernel Apps</span>';
+
+        // Centered search bar (white, with role badge)
+        const searchBar = `
+            <div class="nav-search-wrapper">
+                <div class="nav-search-bar">
+                    <i class="fas fa-search nav-search-icon"></i>
+                    <input type="text" class="nav-search-input" placeholder="Search modules..." aria-label="Search modules">
+                    <span class="nav-search-role-badge"><i class="fas fa-user"></i> ${user.role_label}</span>
+                </div>
+            </div>`;
+
+        // Environment banner (inline on header, no bg — just text)
+        const envBanner = `
+            <div class="nav-env-banner" onclick="Components.toggleEnvPanel()" title="Select environment">
+                <i class="fas fa-globe nav-env-icon"></i>
+                <div class="nav-env-text">
+                    <span class="nav-env-label">Environment</span>
+                    <span class="nav-env-name">CLaaS2SaaS (default)</span>
+                </div>
+            </div>`;
+
+        // Environment selection panel (Power Apps style)
+        const envPanel = `
+            <div id="env-panel" class="env-panel d-none">
+                <div class="env-panel-header">
+                    <h3>Select environment</h3>
+                    <button class="env-panel-close" onclick="Components.toggleEnvPanel()"><i class="fas fa-times"></i></button>
+                </div>
+                <p class="env-panel-desc">Spaces to create, store, and work with data and apps.<br><a href="#" class="env-learn-more">Learn more</a></p>
+                <div class="env-panel-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search" aria-label="Search environments">
+                    <button class="env-filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                </div>
+                <div class="env-accordion">
+                    <div class="env-acc-group">
+                        <button class="env-acc-header" onclick="this.classList.toggle('open')"><i class="fas fa-chevron-right env-acc-chevron"></i> Build apps with Dataverse (0)</button>
                     </div>
-                </div>
-                <div class="nav-center">
-                    <span class="nav-title">Enterprise Control Center</span>
-                </div>
-                <div class="nav-right">
-                    <button class="nav-icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge-dot">3</span></button>
-                    <div class="nav-user" onclick="Components.toggleUserMenu()">
-                        <span class="user-avatar">${initials}</span>
-                        <div class="user-info">
-                            <span class="user-name">${user.name}</span>
-                            <span class="user-role">${user.role_label}</span>
+                    <div class="env-acc-group">
+                        <button class="env-acc-header open" onclick="this.classList.toggle('open')"><i class="fas fa-chevron-right env-acc-chevron"></i> Other environments (1)</button>
+                        <div class="env-acc-body">
+                            <div class="env-acc-item active">
+                                <i class="fas fa-check env-check"></i>
+                                <span>CLaaS2SaaS (default)</span>
+                            </div>
                         </div>
                     </div>
-                    <div id="user-dropdown" class="user-dropdown d-none">
-                        <button onclick="Components.handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
-                        <button onclick="Store.resetDB(); location.reload();"><i class="fas fa-database"></i> Reset Data</button>
-                    </div>
                 </div>
-            `;
-        } else if (context === 'kernel') {
-            const currentHash = window.location.hash.replace('#', '');
-            const activeModKey = getModuleForPage(currentHash);
+            </div>`;
 
-            const moduleShortLabels = { scc: 'SCC', acc: 'ACC', helpdesk: 'Helpdesk' };
-
-            navEl.innerHTML = `
-                <div class="nav-left">
-                    <button class="nav-icon-btn sidebar-toggle" onclick="Components.toggleSidebar()"><i class="fas fa-bars"></i></button>
-                    <div class="nav-brand" onclick="Router.navigate('kernel-dashboard')">
-                        <span class="brand-c">C</span><span class="brand-l">L</span><span class="brand-a1">a</span><span class="brand-a2">a</span><span class="brand-s1">S</span><span class="brand-2">2</span><span class="brand-s2">S</span><span class="brand-a3">a</span><span class="brand-a4">a</span><span class="brand-s3">S</span>
-                    </div>
-                    <span class="nav-separator">|</span>
-                    <span class="nav-module-name">Kernel</span>
+        // Right-side icon buttons
+        const rightIcons = `
+            <div class="nav-right">
+                ${envBanner}
+                <button class="nav-icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge-dot">3</span></button>
+                <button class="nav-icon-btn" title="Settings"><i class="fas fa-gear"></i></button>
+                <button class="nav-icon-btn" title="Help"><i class="fas fa-question-circle"></i></button>
+                <div class="nav-user" onclick="Components.toggleUserMenu()">
+                    <span class="user-avatar">${initials}</span>
                 </div>
-                <div class="nav-center">
-                    ${Object.entries(MODULE_NAV).map(([key, mod]) => `
-                        <button class="nav-module-pill ${activeModKey === key ? 'active' : ''}"
-                            onclick="Router.navigate('${mod.items[0].id}')"
-                            title="${mod.label}">
-                            <i class="fas ${key === 'scc' ? 'fa-shield-halved' : key === 'acc' ? 'fa-gears' : 'fa-headset'}"></i>
-                            <span>${moduleShortLabels[key]}</span>
-                        </button>
-                    `).join('')}
-                </div>
-                <div class="nav-right">
-                    <button class="nav-btn-back" onclick="Router.navigate('ecc')" title="Back to ECC"><i class="fas fa-th-large"></i> ECC</button>
-                    <button class="nav-icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge-dot">3</span></button>
-                    <div class="nav-user" onclick="Components.toggleUserMenu()">
-                        <span class="user-avatar">${initials}</span>
-                        <div class="user-info">
-                            <span class="user-name">${user.name}</span>
-                            <span class="user-role">${user.role_label}</span>
+                <div id="user-dropdown" class="user-dropdown d-none">
+                    <div class="dropdown-user-header">
+                        <span class="dropdown-avatar">${initials}</span>
+                        <div class="dropdown-user-info">
+                            <span class="dropdown-user-name">${user.name}</span>
+                            <span class="dropdown-user-role">${user.role_label}</span>
                         </div>
                     </div>
-                    <div id="user-dropdown" class="user-dropdown d-none">
-                        <button onclick="Components.handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
-                        <button onclick="Store.resetDB(); location.reload();"><i class="fas fa-database"></i> Reset Data</button>
-                    </div>
+                    <div class="dropdown-divider"></div>
+                    <button onclick="Router.navigate('user-profile')"><i class="fas fa-user"></i> My Profile</button>
+                    <button onclick="Components.handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button onclick="Store.resetDB(); location.reload();"><i class="fas fa-database"></i> Reset Data</button>
                 </div>
-            `;
-        }
+            </div>
+            ${envPanel}`;
+
+        navEl.innerHTML = `
+            <div class="nav-left">
+                ${brandHtml}
+                ${contextLabel}
+            </div>
+            ${searchBar}
+            ${rightIcons}
+        `;
     }
 
     // ---------- Left Sidebar — Accordion (Entra-style) ----------
@@ -165,9 +192,11 @@ const Components = (() => {
         const activeModule = getModuleForPage(activeItem);
 
         // Build accordion groups for all modules
+        const shortLabels = { scc: 'SCC', acc: 'ACC', helpdesk: 'Helpdesk' };
         const groupsHtml = Object.entries(MODULE_NAV).map(([key, mod]) => {
             const isOpen = activeModule === key;
             const parentIcon = MODULE_SVG_ICONS[key] || '';
+            const shortLabel = shortLabels[key] || '';
 
             const childrenHtml = mod.items.map(item => {
                 const isActive = item.id === activeItem;
@@ -182,9 +211,9 @@ const Components = (() => {
 
             return `
                 <div class="nav-group ${isOpen ? 'open' : ''}" data-group="${key}">
-                    <div class="nav-parent" onclick="Components.toggleAccordion(this)">
+                    <div class="nav-parent" title="${mod.label}" onclick="Components.toggleAccordion(this)">
                         ${parentIcon}
-                        <span class="nav-text">${mod.label}</span>
+                        <span class="nav-short-label">${shortLabel}</span>
                         <span class="chevron">
                             <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/></svg>
                         </span>
@@ -231,6 +260,9 @@ const Components = (() => {
     function toggleUserMenu() {
         const dd = document.getElementById('user-dropdown');
         dd.classList.toggle('d-none');
+        // Close env panel if open
+        const ep = document.getElementById('env-panel');
+        if (ep) ep.classList.add('d-none');
         setTimeout(() => {
             document.addEventListener('click', function closeMenu(e) {
                 if (!e.target.closest('.nav-user') && !e.target.closest('.user-dropdown')) {
@@ -239,6 +271,26 @@ const Components = (() => {
                 }
             });
         }, 10);
+    }
+
+    // ==================== ENVIRONMENT PANEL ====================
+    function toggleEnvPanel() {
+        const panel = document.getElementById('env-panel');
+        if (!panel) return;
+        panel.classList.toggle('d-none');
+        // Close user menu if open
+        const dd = document.getElementById('user-dropdown');
+        if (dd) dd.classList.add('d-none');
+        if (!panel.classList.contains('d-none')) {
+            setTimeout(() => {
+                document.addEventListener('click', function closePanel(e) {
+                    if (!e.target.closest('.env-panel') && !e.target.closest('.nav-env-banner')) {
+                        panel.classList.add('d-none');
+                        document.removeEventListener('click', closePanel);
+                    }
+                });
+            }, 10);
+        }
     }
 
     function handleLogout() {
@@ -286,7 +338,7 @@ const Components = (() => {
 
     return {
         renderNavbar, renderSidebar, hideSidebar,
-        toggleSidebar, toggleAccordion, toggleUserMenu,
+        toggleSidebar, toggleAccordion, toggleUserMenu, toggleEnvPanel,
         handleLogout, showModal, closeModal, showToast, renderTabBar
     };
 })();

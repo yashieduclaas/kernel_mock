@@ -33,7 +33,7 @@
     --font-body: 'Source Sans 3', sans-serif;
 
     --header-height: 64px;
-    --sidebar-width: 250px;
+    --sidebar-width: 270px;
     --radius: 8px;
     --radius-lg: 12px;
     --shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
@@ -374,7 +374,7 @@ code {
     font-size: .8rem
 }
 
-/* ========== TOP NAVBAR (Midnight Blue) ========== */
+/* ========== TOP NAVBAR — Power Apps / Entra style ========== */
 .top-nav {
     height: var(--header-height);
     background: var(--primary);
@@ -382,101 +382,400 @@ code {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 0 16px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+    gap: 12px
 }
 
-.nav-left,
-.nav-right {
+/* ---- Left section ---- */
+.nav-left {
     display: flex;
     align-items: center;
-    gap: 14px
+    gap: 10px;
+    flex-shrink: 0
 }
 
-.nav-center {
-    flex: 1;
-    text-align: center
+/* Waffle (9-dot grid) */
+.nav-waffle-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, .85);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s
 }
 
-.nav-title {
+.nav-waffle-btn:hover {
+    background: rgba(255, 255, 255, .12)
+}
+
+/* Context label (ECC / Kernel) */
+.nav-context-label {
+    color: rgba(255, 255, 255, .88);
+    font-size: .88rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, .8);
-    font-size: .95rem;
-    font-family: var(--font-heading)
+    font-family: var(--font-heading);
+    white-space: nowrap
 }
 
 .nav-separator {
     color: rgba(255, 255, 255, .3);
-    font-size: 1.2rem
+    font-size: 1.2rem;
+    margin: 0 2px
 }
 
-.nav-module-name {
-    color: rgba(255, 255, 255, .85);
+/* ---- Centered search bar (white) ---- */
+.nav-search-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px
+}
+
+.nav-search-bar {
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+    overflow: hidden
+}
+
+.nav-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
     font-size: .9rem;
+    pointer-events: none
+}
+
+.nav-search-input {
+    flex: 1;
+    padding: 9px 14px 9px 40px;
+    border: none;
+    background: transparent;
+    color: var(--dark);
+    font-size: .88rem;
+    font-family: var(--font-body);
+    outline: none
+}
+
+.nav-search-input::placeholder {
+    color: #999
+}
+
+.nav-search-input:focus {
+    box-shadow: inset 0 0 0 2px rgba(25, 62, 107, .2)
+}
+
+/* Role badge inside search bar */
+.nav-search-role-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 14px;
+    margin: 4px 4px 4px 0;
+    background: #f0f2f5;
+    border: 1px solid #e0e3e8;
+    border-radius: 16px;
+    font-size: .76rem;
     font-weight: 500;
+    color: #555;
+    white-space: nowrap;
     font-family: var(--font-heading)
 }
 
-.nav-center {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%)
+.nav-search-role-badge i {
+    font-size: .72rem;
+    color: #888
 }
 
-.nav-module-pill {
+/* ---- Right section ---- */
+.nav-right {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, .08);
-    border: 1px solid rgba(255, 255, 255, .12);
-    color: rgba(255, 255, 255, .75);
-    padding: 6px 14px;
-    border-radius: 20px;
+    gap: 4px;
+    flex-shrink: 0
+}
+
+/* Environment banner (blends into header — no bg) */
+.nav-env-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    padding: 6px 12px;
     cursor: pointer;
-    font-size: .78rem;
+    margin-right: 6px;
+    border-radius: 4px;
+    transition: background .2s
+}
+
+.nav-env-banner:hover {
+    background: rgba(255, 255, 255, .1)
+}
+
+.nav-env-icon {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, .7);
+    flex-shrink: 0
+}
+
+.nav-env-text {
+    display: flex;
+    flex-direction: column
+}
+
+.nav-env-label {
+    font-size: .62rem;
+    color: rgba(255, 255, 255, .55);
     font-weight: 600;
-    font-family: var(--font-heading);
-    transition: all .2s;
-    white-space: nowrap
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: .3px
 }
 
-.nav-module-pill:hover {
-    background: rgba(255, 255, 255, .18);
+.nav-env-name {
+    font-size: .82rem;
     color: var(--white);
-    border-color: rgba(255, 255, 255, .3)
+    font-weight: 500;
+    font-family: var(--font-heading);
+    white-space: nowrap;
+    line-height: 1.3
 }
 
-.nav-module-pill.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--primary)
+/* ---- Environment selection panel (Power Apps style) ---- */
+.env-panel {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    width: 380px;
+    height: calc(100vh - var(--header-height));
+    background: var(--white);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, .15);
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    animation: envSlideIn .2s ease-out
 }
 
+@keyframes envSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+.env-panel.d-none {
+    display: none !important
+}
+
+.env-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 4px
+}
+
+.env-panel-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    font-family: var(--font-heading);
+    margin: 0
+}
+
+.env-panel-close {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background .15s
+}
+
+.env-panel-close:hover {
+    background: rgba(0, 0, 0, .06)
+}
+
+.env-panel-desc {
+    padding: 8px 24px 14px;
+    font-size: .84rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0
+}
+
+.env-learn-more {
+    color: #0078d4;
+    text-decoration: none;
+    font-size: .82rem
+}
+
+.env-learn-more:hover {
+    text-decoration: underline
+}
+
+.env-panel-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px 16px;
+    position: relative
+}
+
+.env-panel-search i {
+    position: absolute;
+    left: 36px;
+    color: #888;
+    font-size: .82rem
+}
+
+.env-panel-search input {
+    flex: 1;
+    padding: 8px 12px 8px 32px;
+    border: 1px solid #d0d4da;
+    border-radius: 4px;
+    font-size: .84rem;
+    outline: none;
+    transition: border-color .2s
+}
+
+.env-panel-search input:focus {
+    border-color: #0078d4
+}
+
+.env-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: 1px solid #d0d4da;
+    color: #0078d4;
+    padding: 7px 14px;
+    border-radius: 4px;
+    font-size: .82rem;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background .15s
+}
+
+.env-filter-btn:hover {
+    background: rgba(0, 120, 212, .06)
+}
+
+/* Env accordion */
+.env-accordion {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 24px
+}
+
+.env-acc-group {
+    margin-bottom: 2px
+}
+
+.env-acc-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 12px 4px;
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading)
+}
+
+.env-acc-header:hover {
+    background: rgba(0, 0, 0, .02)
+}
+
+.env-acc-chevron {
+    font-size: .65rem;
+    transition: transform .2s;
+    color: #888
+}
+
+.env-acc-header.open .env-acc-chevron {
+    transform: rotate(90deg)
+}
+
+.env-acc-body {
+    display: none;
+    padding: 4px 0 8px 20px
+}
+
+.env-acc-header.open+.env-acc-body {
+    display: block
+}
+
+.env-acc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: .85rem;
+    color: var(--dark);
+    cursor: pointer;
+    transition: background .15s
+}
+
+.env-acc-item:hover {
+    background: rgba(0, 0, 0, .04)
+}
+
+.env-acc-item.active {
+    background: rgba(0, 120, 212, .06)
+}
+
+.env-check {
+    color: #0078d4;
+    font-size: .8rem
+}
+
+/* ---- Icon buttons ---- */
 .nav-icon-btn {
     background: none;
     border: none;
     color: rgba(255, 255, 255, .85);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     cursor: pointer;
     padding: 8px;
-    border-radius: 50%;
+    border-radius: 4px;
     position: relative;
-    transition: all .2s
+    transition: background .2s
 }
 
 .nav-icon-btn:hover {
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, .12);
     color: var(--white)
-}
-
-.sidebar-toggle {
-    font-size: 1.2rem
 }
 
 .badge-dot {
@@ -485,88 +784,103 @@ code {
     right: 2px;
     background: var(--danger);
     color: white;
-    font-size: .6rem;
-    width: 18px;
-    height: 18px;
+    font-size: .55rem;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 700;
     border: 2px solid var(--primary)
 }
 
-.nav-btn-back {
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .2);
-    color: rgba(255, 255, 255, .85);
-    padding: 6px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: .8rem;
-    transition: all .2s;
-    font-family: var(--font-heading)
-}
-
-.nav-btn-back:hover {
-    background: rgba(255, 255, 255, .2);
-    color: var(--white)
-}
-
+/* ---- User avatar ---- */
 .nav-user {
     display: flex;
     align-items: center;
-    gap: 10px;
     cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 6px;
+    padding: 4px;
+    border-radius: 50%;
     transition: background .2s;
-    position: relative
+    position: relative;
+    margin-left: 4px
 }
 
 .nav-user:hover {
-    background: rgba(255, 255, 255, .1)
+    background: rgba(255, 255, 255, .12)
 }
 
 .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--accent);
     color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: .85rem;
+    font-weight: 700;
+    font-size: .78rem;
     font-family: var(--font-heading)
 }
 
-.user-info {
+/* ---- User dropdown ---- */
+.user-dropdown {
+    position: absolute;
+    top: calc(var(--header-height) - 4px);
+    right: 16px;
+    background: var(--white);
+    border-radius: 8px;
+    min-width: 260px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .18);
+    z-index: 2000;
+    overflow: hidden
+}
+
+.dropdown-user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: rgba(25, 62, 107, .04)
+}
+
+.dropdown-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    font-family: var(--font-heading);
+    flex-shrink: 0
+}
+
+.dropdown-user-info {
     display: flex;
     flex-direction: column
 }
 
-.user-name {
-    font-size: .85rem;
-    font-weight: 500;
+.dropdown-user-name {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--dark);
     font-family: var(--font-heading)
 }
 
-.user-role {
-    font-size: .7rem;
-    color: rgba(255, 255, 255, .7)
+.dropdown-user-role {
+    font-size: .75rem;
+    color: var(--muted)
 }
 
-.user-dropdown {
-    position: absolute;
-    top: 55px;
-    right: 0;
-    background: var(--white);
-    border-radius: var(--radius);
-    min-width: 200px;
-    box-shadow: var(--shadow-lg);
-    z-index: 200
+.dropdown-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, .08)
 }
 
 .user-dropdown button {
@@ -577,15 +891,15 @@ code {
     background: none;
     border: none;
     color: var(--dark);
-    padding: 12px 20px;
+    padding: 11px 18px;
     cursor: pointer;
-    font-size: .85rem;
+    font-size: .84rem;
     text-align: left;
-    transition: background .2s
+    transition: background .15s
 }
 
 .user-dropdown button:hover {
-    background: rgba(25, 62, 107, .05)
+    background: rgba(25, 62, 107, .06)
 }
 
 /* ========== APP BODY ========== */
@@ -594,7 +908,7 @@ code {
     height: calc(100vh - var(--header-height))
 }
 
-/* ========== SIDEBAR — Entra-style Accordion ========== */
+/* ========== SIDEBAR — Entra-style Accordion + Icon Rail ========== */
 .left-sidebar {
     width: var(--sidebar-width);
     background: var(--surface);
@@ -602,7 +916,7 @@ code {
     overflow-x: hidden;
     overflow-y: auto;
     flex-shrink: 0;
-    transition: width .28s ease;
+    transition: width .28s cubic-bezier(.4, 0, .2, 1);
     box-shadow: 1px 0 3px rgba(0, 0, 0, .05);
     display: flex;
     flex-direction: column;
@@ -610,44 +924,63 @@ code {
 }
 
 .left-sidebar.collapsed {
-    width: 72px
+    width: 64px
+}
+
+/* ---- Scrollbar (thin, Entra-like) ---- */
+.left-sidebar::-webkit-scrollbar {
+    width: 4px
+}
+
+.left-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .12);
+    border-radius: 4px
 }
 
 /* ---- Accordion nav container ---- */
 .sidebar-nav-accordion {
-    padding: 8px 0;
+    padding: 6px 0;
     flex: 1
 }
 
-/* ---- Nav group (accordion section) ---- */
+/* ---- Nav group ---- */
 .nav-group {
-    margin-top: 2px
+    margin: 0
 }
 
-/* ---- Parent row ---- */
+/* ==========================
+   PARENT ROW
+========================== */
 .nav-parent {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 14px 18px;
+    padding: 12px 18px;
     cursor: pointer;
     color: var(--primary);
     font-weight: 600;
     font-size: 14px;
     font-family: var(--font-heading);
-    transition: background .18s ease;
+    transition: background .15s ease;
     user-select: none;
     border: none;
     background: none;
     width: 100%;
-    text-align: left
+    text-align: left;
+    position: relative
 }
 
 .nav-parent:hover {
     background: rgba(0, 0, 0, .04)
 }
 
-/* ---- Parent icon (Fluent SVG) ---- */
+.nav-parent:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+    border-radius: 4px
+}
+
+/* ---- Parent icon ---- */
 .nav-icon {
     width: 22px;
     height: 22px;
@@ -655,11 +988,21 @@ code {
     flex-shrink: 0
 }
 
+/* ---- Label text ---- */
+.nav-short-label {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--primary);
+    white-space: nowrap;
+    flex-shrink: 0
+}
+
 .nav-text {
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    transition: opacity .2s ease
 }
 
 /* ---- Chevron ---- */
@@ -669,71 +1012,67 @@ code {
     align-items: center;
     transition: transform .25s ease;
     color: var(--primary);
-    opacity: .5
+    opacity: .45
 }
 
 .nav-group.open .chevron {
     transform: rotate(90deg)
 }
 
-/* hide chevron + text when collapsed */
-.left-sidebar.collapsed .chevron,
-.left-sidebar.collapsed .nav-text {
-    display: none
-}
-
-.left-sidebar.collapsed .nav-parent {
-    justify-content: center;
-    padding: 14px
-}
-
-/* ---- Children container ---- */
+/* ==========================
+   CHILDREN CONTAINER
+========================== */
 .nav-children {
     max-height: 0;
     overflow: hidden;
-    transition: max-height .28s ease
+    transition: max-height .28s cubic-bezier(.4, 0, .2, 1)
 }
 
 .nav-group.open .nav-children {
-    max-height: 500px
+    max-height: 600px
 }
 
-.left-sidebar.collapsed .nav-children {
-    display: none
-}
-
-/* ---- Child row ---- */
+/* ==========================
+   CHILD ROW
+========================== */
 .nav-child {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 18px 10px 56px;
-    font-size: 14px;
+    padding: 9px 18px 9px 56px;
+    font-size: 13.5px;
     cursor: pointer;
     color: var(--primary);
     border-left: 3px solid transparent;
-    transition: all .18s ease;
-    font-family: var(--font-body)
+    transition: background .15s ease, border-color .15s ease;
+    font-family: var(--font-body);
+    position: relative
 }
 
 .nav-child:hover {
     background: rgba(0, 0, 0, .04)
 }
 
+.nav-child:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+    border-radius: 4px
+}
+
 /* Active child — gold accent */
 .nav-child.active {
-    background: rgba(179, 161, 37, .12);
-    border-left: 3px solid var(--accent);
+    background: rgba(179, 161, 37, .1);
+    border-left-color: var(--accent);
     font-weight: 600
 }
 
-/* ---- Child icon (Fluent SVG) ---- */
+/* ---- Child icon ---- */
 .nav-child-icon {
     width: 18px;
     height: 18px;
     color: var(--primary);
     flex-shrink: 0;
-    opacity: .7
+    opacity: .65
 }
 
 .nav-child.active .nav-child-icon {
@@ -741,25 +1080,147 @@ code {
     color: var(--accent)
 }
 
+/* ---- Child text ---- */
 .nav-child-text {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    transition: opacity .2s ease
 }
 
 /* ---- Divider ---- */
 .nav-divider {
     height: 1px;
-    background: #e6e6e6;
-    margin: 8px 14px
+    background: rgba(0, 0, 0, .06);
+    margin: 4px 14px
 }
 
-/* ---- Collapse button (bottom, Entra-style) ---- */
+/* ==========================
+   COLLAPSED MODE — ICON RAIL
+   Critical: child icons of the
+   open group stay visible
+========================== */
+
+/* Hide text & chevron */
+.left-sidebar.collapsed .nav-text,
+.left-sidebar.collapsed .chevron {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    position: absolute
+}
+
+.left-sidebar.collapsed .nav-child-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none
+}
+
+/* Parent: center icon */
+.left-sidebar.collapsed .nav-parent {
+    justify-content: center;
+    padding: 12px 0;
+    gap: 0
+}
+
+/* Children of NON-open groups: hide */
+.left-sidebar.collapsed .nav-group:not(.open) .nav-children {
+    max-height: 0 !important;
+    overflow: hidden
+}
+
+/* Children of OPEN group: show (icons only) */
+.left-sidebar.collapsed .nav-group.open .nav-children {
+    max-height: 600px
+}
+
+/* Child in collapsed mode: center icon, tighter padding */
+.left-sidebar.collapsed .nav-child {
+    justify-content: center;
+    padding: 10px 0;
+    gap: 0;
+    border-left: 3px solid transparent
+}
+
+.left-sidebar.collapsed .nav-child.active {
+    border-left-color: var(--accent);
+    background: rgba(179, 161, 37, .1)
+}
+
+/* Make child icon slightly larger in rail */
+.left-sidebar.collapsed .nav-child-icon {
+    width: 20px;
+    height: 20px
+}
+
+/* Divider in collapsed */
+.left-sidebar.collapsed .nav-divider {
+    margin: 4px 8px
+}
+
+/* ==========================
+   TOOLTIPS (CSS-only)
+   Shown only in collapsed mode
+========================== */
+.left-sidebar.collapsed [data-tooltip] {
+    position: relative
+}
+
+.left-sidebar.collapsed [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15)
+}
+
+.left-sidebar.collapsed [data-tooltip]::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: var(--primary);
+    margin-left: -2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s ease;
+    z-index: 1000
+}
+
+.left-sidebar.collapsed [data-tooltip]:hover::after,
+.left-sidebar.collapsed [data-tooltip]:hover::before {
+    opacity: 1
+}
+
+/* ==========================
+   COLLAPSE BUTTON
+========================== */
 .sidebar-collapse-btn {
     position: sticky;
     bottom: 0;
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-top: 1px solid rgba(0, 0, 0, .06);
     background: var(--surface);
@@ -768,15 +1229,20 @@ code {
     align-items: center;
     justify-content: center;
     color: var(--primary);
-    transition: background .18s ease
+    transition: background .15s ease
 }
 
 .sidebar-collapse-btn:hover {
     background: rgba(0, 0, 0, .04)
 }
 
+.sidebar-collapse-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px
+}
+
 .sidebar-collapse-btn svg {
-    transition: transform .25s ease
+    transition: transform .28s cubic-bezier(.4, 0, .2, 1)
 }
 
 .left-sidebar.collapsed .sidebar-collapse-btn svg {
@@ -2240,6 +2706,92 @@ code {
 .audit-failed {
     background: rgba(233, 172, 83, .15);
     color: #b07a1a
+}
+
+/* ========== COPILOT LANDING (Kernel Apps dashboard) ========== */
+.copilot-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height) - 80px);
+    padding: 40px 24px
+}
+
+.copilot-heading {
+    color: var(--primary);
+    font-size: 30px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    text-align: center;
+    margin: 0 0 28px;
+    letter-spacing: -.2px
+}
+
+.copilot-input-bar {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    height: 64px;
+    background: var(--white);
+    border-radius: 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .08), 0 0 0 1px rgba(0, 0, 0, .04);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    transition: box-shadow .2s
+}
+
+.copilot-input-bar:focus-within {
+    box-shadow: 0 4px 20px rgba(25, 62, 107, .12), 0 0 0 2px rgba(25, 62, 107, .15)
+}
+
+.copilot-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-body);
+    color: var(--dark);
+    height: 100%;
+    position: relative;
+    z-index: 2
+}
+
+.copilot-input::placeholder {
+    color: transparent
+}
+
+/* Ghost placeholder overlay (for typewriter effect) */
+.copilot-ghost {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-body);
+    color: #999;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #999;
+    padding-right: 2px;
+    animation: copilotBlink 1s step-end infinite
+}
+
+.copilot-ghost:empty {
+    border-right-color: transparent;
+    animation: none
+}
+
+@keyframes copilotBlink {
+    50% {
+        border-right-color: transparent
+    }
 }
 
 /* ========== RESPONSIVE ========== */

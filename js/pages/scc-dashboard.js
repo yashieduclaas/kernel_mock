@@ -12,18 +12,18 @@ const SCCDashboardPage = (() => {
         Components.renderNavbar('kernel');
         Components.renderSidebar('scc-dashboard');
 
-        const users        = Store.getAll('security_users');
-        const roles        = Store.getAll('role_permissions');
-        const userRoles    = Store.getAll('user_roles');
-        const sessions     = Store.getAll('audit_sessions');
-        const actions      = Store.getAll('audit_actions');
+        const users = Store.getAll('security_users');
+        const roles = Store.getAll('role_permissions');
+        const userRoles = Store.getAll('user_roles');
+        const sessions = Store.getAll('audit_sessions');
+        const actions = Store.getAll('audit_actions');
 
-        const activeUsers     = users.filter(u => u.is_active).length;
-        const activeAssign    = userRoles.filter(r => r.is_active).length;
+        const activeUsers = users.filter(u => u.is_active).length;
+        const activeAssign = userRoles.filter(r => r.is_active).length;
         const successSessions = sessions.filter(s => s.is_success).length;
-        const failedSessions  = sessions.filter(s => !s.is_success).length;
-        const deniedActions   = actions.filter(a => a.action_status === 'Denied').length;
-        const successActions  = actions.filter(a => a.action_status === 'Success').length;
+        const failedSessions = sessions.filter(s => !s.is_success).length;
+        const deniedActions = actions.filter(a => a.action_status === 'Denied').length;
+        const successActions = actions.filter(a => a.action_status === 'Success').length;
 
         const sessionRate = sessions.length
             ? Math.round((successSessions / sessions.length) * 100)
@@ -55,7 +55,7 @@ const SCCDashboardPage = (() => {
                     <!-- Header -->
                     <div class="scc-dash-header">
                         <div>
-                            <h1 class="scc-dash-title"><i class="fas fa-shield-halved"></i> SCC Dashboard</h1>
+                            <h1 class="scc-dash-title"><i class="fas fa-shield-halved"></i> Security Control Center</h1>
                             <p class="scc-dash-subtitle">Security analytics overview — users, roles, sessions &amp; audit activity</p>
                         </div>
                         <div class="scc-dash-score-wrap">

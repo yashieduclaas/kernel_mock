@@ -58,12 +58,6 @@ const ECCPage = (() => {
                     <p>Centralized role-based management for <strong>CLaaS<span class="gold">2</span>SaaS</strong></p>
                 </div>
 
-                <div class="ecc-search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search modules..." oninput="ECCPage.search(this.value)">
-                    <span class="ecc-user-badge"><i class="fas fa-user"></i> ${Auth.getCurrentUser().role_label}</span>
-                </div>
-
                 <div class="ecc-modules-grid" id="ecc-modules-grid">
                     ${renderModuleCards(filtered)}
                 </div>
