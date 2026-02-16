@@ -1103,6 +1103,7 @@ code {
 
 /* Hide text & chevron */
 .left-sidebar.collapsed .nav-text,
+.left-sidebar.collapsed .nav-short-label,
 .left-sidebar.collapsed .chevron {
     opacity: 0;
     width: 0;

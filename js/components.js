@@ -239,9 +239,6 @@ const Components = (() => {
 
     // ---------- Accordion toggle (user-driven only) ----------
     function toggleAccordion(parentEl) {
-        const sidebar = document.getElementById('left-sidebar');
-        if (sidebar.classList.contains('collapsed')) return;
-
         const group = parentEl.parentElement;
         group.classList.toggle('open');
     }
