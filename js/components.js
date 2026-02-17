@@ -6,6 +6,40 @@
 
 const Components = (() => {
 
+    // ---------- Environment Data & State ----------
+    const ENVIRONMENTS = [
+        'CLaaS2SaaS default',
+        'CLaaS2SaaS testing',
+        'CLaaS2SaaS production',
+        'CLaaS2SaaS development'
+    ];
+
+    function getCurrentEnvironment() {
+        return localStorage.getItem('selectedEnvironment') || 'CLaaS2SaaS default';
+    }
+
+    function setCurrentEnvironment(env) {
+        localStorage.setItem('selectedEnvironment', env);
+    }
+
+    function getEnvListHtml() {
+        const current = getCurrentEnvironment();
+        return ENVIRONMENTS
+            .filter(env => env !== current)
+            .map(env => `<div class="env-item" data-env="${env.replace(/"/g, '&quot;')}" onclick="Components.selectEnvironment(this.getAttribute('data-env'))"><span>${env}</span></div>`)
+            .join('');
+    }
+
+    function selectEnvironment(env) {
+        setCurrentEnvironment(env);
+        const label = document.querySelector('.nav-env-name');
+        if (label) label.textContent = env;
+        const panel = document.getElementById('env-panel');
+        if (panel) panel.classList.add('d-none');
+        const list = document.getElementById('env-list');
+        if (list) list.innerHTML = getEnvListHtml();
+    }
+
     // Sidebar state tracking
     const sidebarState = {
         openGroups: new Set() // Track which groups are open
@@ -85,10 +119,22 @@ const Components = (() => {
         return null; // kernel-dashboard or unknown
     }
 
+    function getUnreadNotifications(email) {
+        if (!email) return [];
+        return Store.getAll('notifications').filter(n => n.user_email === email && !n.is_read);
+    }
+
+    function getModuleName(moduleId) {
+        const mod = Store.getById('solutions_modules', 'solution_module_id', moduleId);
+        return mod ? mod.module_name : moduleId;
+    }
+
     // ---------- Top Navbar ----------
     function renderNavbar(context) {
         const user = Auth.getCurrentUser();
         const initials = Auth.getInitials(user.name);
+        const unreadNotifications = getUnreadNotifications(user?.email || '');
+        const unreadCount = unreadNotifications.length;
         const navEl = document.getElementById('top-navbar');
         navEl.className = 'top-nav';
 
@@ -119,11 +165,11 @@ const Components = (() => {
                 <i class="fas fa-globe nav-env-icon"></i>
                 <div class="nav-env-text">
                     <span class="nav-env-label">Environment</span>
-                    <span class="nav-env-name">CLaaS2SaaS (default)</span>
+                    <span class="nav-env-name">${getCurrentEnvironment()}</span>
                 </div>
             </div>`;
 
-        // Environment selection panel (Power Apps style)
+        // Environment selection panel (simple list, no Dataverse/accordion/search/filter)
         const envPanel = `
             <div id="env-panel" class="env-panel d-none">
                 <div class="env-panel-header">
@@ -131,34 +177,33 @@ const Components = (() => {
                     <button class="env-panel-close" onclick="Components.toggleEnvPanel()"><i class="fas fa-times"></i></button>
                 </div>
                 <p class="env-panel-desc">Spaces to create, store, and work with data and apps.<br><a href="#" class="env-learn-more">Learn more</a></p>
-                <div class="env-panel-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search" aria-label="Search environments">
-                    <button class="env-filter-btn"><i class="fas fa-filter"></i> Filter</button>
-                </div>
-                <div class="env-accordion">
-                    <div class="env-acc-group">
-                        <button class="env-acc-header" onclick="this.classList.toggle('open')"><i class="fas fa-chevron-right env-acc-chevron"></i> Build apps with Dataverse (0)</button>
-                    </div>
-                    <div class="env-acc-group">
-                        <button class="env-acc-header open" onclick="this.classList.toggle('open')"><i class="fas fa-chevron-right env-acc-chevron"></i> Other environments (1)</button>
-                        <div class="env-acc-body">
-                            <div class="env-acc-item active">
-                                <i class="fas fa-check env-check"></i>
-                                <span>CLaaS2SaaS (default)</span>
-                            </div>
-                        </div>
-                    </div>
+                <div id="env-list" class="env-list">
+                    ${getEnvListHtml()}
                 </div>
             </div>`;
 
         // Right-side icon buttons
+        const notificationBadge = unreadCount > 0 ? `<span class="badge-dot">${unreadCount}</span>` : '';
+        const notificationListHtml = unreadNotifications.length > 0
+            ? unreadNotifications.map(n => {
+                const moduleName = (getModuleName(n.module_id) || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                return `<button class="notification-item" data-notification-id="${n.notification_id}" data-module-id="${n.module_id}" onclick="Components.handleNotificationClick('${n.notification_id}', '${n.module_id}')">
+                    <i class="fas fa-key"></i> New access request for ${moduleName}
+                </button>`;
+            }).join('')
+            : '<div class="notification-empty">No new notifications</div>';
         const rightIcons = `
             <div class="nav-right">
                 ${envBanner}
-                <button class="nav-icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge-dot">3</span></button>
+                <div class="nav-notification-wrapper">
+                    <button class="nav-icon-btn" title="Notifications" onclick="Components.toggleNotificationPanel()"><i class="fas fa-bell"></i>${notificationBadge}</button>
+                    <div id="notification-panel" class="notification-panel d-none">
+                        <div class="notification-panel-header">Notifications</div>
+                        <div class="notification-list">${notificationListHtml}</div>
+                    </div>
+                </div>
                 <button class="nav-icon-btn" title="Settings"><i class="fas fa-gear"></i></button>
-                <button class="nav-icon-btn" title="Help"><i class="fas fa-question-circle"></i></button>
+                <button class="nav-icon-btn nav-copilot-btn" title="Copilot"><img src="assets/icons/copilot.png" class="copilot-icon" alt="Copilot" /></button>
                 <div class="nav-user" onclick="Components.toggleUserMenu()">
                     <span class="user-avatar">${initials}</span>
                 </div>
@@ -271,7 +316,8 @@ const Components = (() => {
     function toggleUserMenu() {
         const dd = document.getElementById('user-dropdown');
         dd.classList.toggle('d-none');
-        // Close env panel if open
+        const np = document.getElementById('notification-panel');
+        if (np) np.classList.add('d-none');
         const ep = document.getElementById('env-panel');
         if (ep) ep.classList.add('d-none');
         setTimeout(() => {
@@ -284,14 +330,43 @@ const Components = (() => {
         }, 10);
     }
 
+    function toggleNotificationPanel() {
+        const panel = document.getElementById('notification-panel');
+        if (!panel) return;
+        panel.classList.toggle('d-none');
+        const dd = document.getElementById('user-dropdown');
+        if (dd) dd.classList.add('d-none');
+        const ep = document.getElementById('env-panel');
+        if (ep) ep.classList.add('d-none');
+        if (!panel.classList.contains('d-none')) {
+            setTimeout(() => {
+                document.addEventListener('click', function closePanel(e) {
+                    if (!e.target.closest('.notification-panel') && !e.target.closest('.nav-notification-wrapper')) {
+                        panel.classList.add('d-none');
+                        document.removeEventListener('click', closePanel);
+                    }
+                });
+            }, 10);
+        }
+    }
+
+    function handleNotificationClick(notificationId, moduleId) {
+        Store.update('notifications', 'notification_id', notificationId, { is_read: true });
+        sessionStorage.setItem('adminAccessRequestModule', moduleId || '');
+        const panel = document.getElementById('notification-panel');
+        if (panel) panel.classList.add('d-none');
+        Router.navigate('admin-access-requests');
+    }
+
     // ==================== ENVIRONMENT PANEL ====================
     function toggleEnvPanel() {
         const panel = document.getElementById('env-panel');
         if (!panel) return;
         panel.classList.toggle('d-none');
-        // Close user menu if open
         const dd = document.getElementById('user-dropdown');
         if (dd) dd.classList.add('d-none');
+        const np = document.getElementById('notification-panel');
+        if (np) np.classList.add('d-none');
         if (!panel.classList.contains('d-none')) {
             setTimeout(() => {
                 document.addEventListener('click', function closePanel(e) {
@@ -331,6 +406,20 @@ const Components = (() => {
         document.getElementById('modal-container').innerHTML = '';
     }
 
+    function showConfirmModal(options) {
+        const { title = 'Confirm', message, confirmText = 'Confirm', cancelText = 'Cancel', onConfirm } = options;
+        const body = `<p class="confirm-message">${message}</p>`;
+        const footer = `
+            <button class="btn-secondary" onclick="Components.closeModal()">${cancelText}</button>
+            <button class="btn-primary" id="confirm-modal-ok">${confirmText}</button>
+        `;
+        showModal(title, body, footer);
+        document.getElementById('confirm-modal-ok').onclick = () => {
+            closeModal();
+            if (typeof onConfirm === 'function') onConfirm();
+        };
+    }
+
     // ---------- Toast ----------
     function showToast(message, type = 'success') {
         const toast = document.createElement('div');
@@ -349,7 +438,9 @@ const Components = (() => {
 
     return {
         renderNavbar, renderSidebar, hideSidebar,
-        toggleSidebar, toggleAccordion, toggleUserMenu, toggleEnvPanel,
-        handleLogout, showModal, closeModal, showToast, renderTabBar
+        toggleSidebar, toggleAccordion, toggleUserMenu, toggleEnvPanel, toggleNotificationPanel,
+        handleNotificationClick,
+        selectEnvironment,
+        handleLogout, showModal, closeModal, showConfirmModal, showToast, renderTabBar
     };
 })();

@@ -12,18 +12,18 @@ const Store = (() => {
     const SEED_DATA = {
         // Table 1: SecurityDB_Solution_Module
         solutions_modules: [
-            { solution_module_id: 'SM001', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'AGNT_HR', module_name: 'Agentic HR', description: 'Human resources management with AI-driven talent analytics', module_lead: 'John Smith', documentation_url: 'https://docs.c2s.com/agentic-hr', module_version: 'v2.3.1', is_active: true },
-            { solution_module_id: 'SM002', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'AGNT_TLNT', module_name: 'Agentic Talents', description: 'Talent management and workforce intelligence platform', module_lead: 'Sarah Johnson', documentation_url: 'https://docs.c2s.com/agentic-talents', module_version: 'v1.5.0', is_active: true },
-            { solution_module_id: 'SM003', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_CRCLM', module_name: 'CLaaS Curriculum', description: 'Comprehensive curriculum design and management', module_lead: 'Michael Chen', documentation_url: 'https://docs.c2s.com/claas-curriculum', module_version: 'v3.0.2', is_active: true },
-            { solution_module_id: 'SM004', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_DEVL', module_name: 'CLaaS Developer', description: 'Development platform for building CLaaS2SaaS extensions', module_lead: 'Emily Rodriguez', documentation_url: 'https://docs.c2s.com/claas-developer', module_version: 'v2.1.0', is_active: true },
-            { solution_module_id: 'SM005', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'CLSM', module_name: 'CLaaS Manager', description: 'Core learning management and orchestration', module_lead: 'David Lee', documentation_url: 'https://docs.c2s.com/claas-manager', module_version: 'v4.0.1', is_active: true },
-            { solution_module_id: 'SM006', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'CLSN', module_name: 'CLaaS Mentor', description: 'AI-powered mentoring and coaching platform', module_lead: 'Lisa Wang', documentation_url: 'https://docs.c2s.com/claas-mentor', module_version: 'v1.2.0', is_active: true },
-            { solution_module_id: 'SM007', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'AGNT_SOP', module_name: 'Agentic SOP', description: 'Standard operating procedure automation', module_lead: 'Tom Harris', documentation_url: 'https://docs.c2s.com/agentic-sop', module_version: 'v1.0.0', is_active: true },
-            { solution_module_id: 'SM008', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_SALES', module_name: 'Agentic Sales', description: 'AI-driven sales pipeline and customer engagement', module_lead: 'Rachel Kim', documentation_url: 'https://docs.c2s.com/agentic-sales', module_version: 'v2.0.0', is_active: true },
-            { solution_module_id: 'SM009', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'KNL', module_name: 'Kernel', description: 'Security kernel and centralized access control for all C2S applications', module_lead: 'Rabiul Hossain', documentation_url: 'https://docs.c2s.com/kernel', module_version: 'v1.0.0', is_active: true },
-            { solution_module_id: 'SM010', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_FIN', module_name: 'Agentic Finance', description: 'Financial management and reporting automation', module_lead: 'James Park', documentation_url: 'https://docs.c2s.com/agentic-finance', module_version: 'v1.1.0', is_active: true },
-            { solution_module_id: 'SM011', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_PROC', module_name: 'Agentic Procurement', description: 'Procurement and vendor management with AI', module_lead: 'Karen Wilson', documentation_url: 'https://docs.c2s.com/agentic-procurement', module_version: 'v1.0.0', is_active: true },
-            { solution_module_id: 'SM012', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_MKT', module_name: 'Agentic Marketer', description: 'Marketing automation and campaign intelligence', module_lead: 'Nina Patel', documentation_url: 'https://docs.c2s.com/agentic-marketer', module_version: 'v1.3.0', is_active: true },
+            { solution_module_id: 'SM001', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'AGNT_HR', module_name: 'Agentic HR', description: 'Human resources management with AI-driven talent analytics', module_lead: 'John Smith', module_lead_email: 'john.smith@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-hr', module_version: 'v2.3.1', is_active: true },
+            { solution_module_id: 'SM002', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'AGNT_TLNT', module_name: 'Agentic Talents', description: 'Talent management and workforce intelligence platform', module_lead: 'Sarah Johnson', module_lead_email: 'sarah.johnson@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-talents', module_version: 'v1.5.0', is_active: true },
+            { solution_module_id: 'SM003', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_CRCLM', module_name: 'CLaaS Curriculum', description: 'Comprehensive curriculum design and management', module_lead: 'Michael Chen', module_lead_email: 'michael.chen@claaas2saas.com', documentation_url: 'https://docs.c2s.com/claas-curriculum', module_version: 'v3.0.2', is_active: true },
+            { solution_module_id: 'SM004', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_DEVL', module_name: 'CLaaS Developer', description: 'Development platform for building CLaaS2SaaS extensions', module_lead: 'Emily Rodriguez', module_lead_email: 'emily.rodriguez@claaas2saas.com', documentation_url: 'https://docs.c2s.com/claas-developer', module_version: 'v2.1.0', is_active: true },
+            { solution_module_id: 'SM005', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'CLSM', module_name: 'CLaaS Manager', description: 'Core learning management and orchestration', module_lead: 'David Lee', module_lead_email: 'david.lee@claaas2saas.com', documentation_url: 'https://docs.c2s.com/claas-manager', module_version: 'v4.0.1', is_active: true },
+            { solution_module_id: 'SM006', solution_code: 'ADC', solution_name: 'Adaptive CLaaS', module_code: 'CLSN', module_name: 'CLaaS Mentor', description: 'AI-powered mentoring and coaching platform', module_lead: 'Lisa Wang', module_lead_email: 'lisa.wang@claaas2saas.com', documentation_url: 'https://docs.c2s.com/claas-mentor', module_version: 'v1.2.0', is_active: true },
+            { solution_module_id: 'SM007', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'AGNT_SOP', module_name: 'Agentic SOP', description: 'Standard operating procedure automation', module_lead: 'Tom Harris', module_lead_email: 'tom.harris@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-sop', module_version: 'v1.0.0', is_active: true },
+            { solution_module_id: 'SM008', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_SALES', module_name: 'Agentic Sales', description: 'AI-driven sales pipeline and customer engagement', module_lead: 'Rachel Kim', module_lead_email: 'rachel.kim@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-sales', module_version: 'v2.0.0', is_active: true },
+            { solution_module_id: 'SM009', solution_code: 'AIW', solution_name: 'Agentic Intelligent Workplace', module_code: 'KNL', module_name: 'Kernel Apps', description: 'Security kernel and centralized access control for all C2S applications', module_lead: 'Rabiul Hossain', module_lead_email: 'rabiul.hossain@claaas2saas.com', documentation_url: 'https://docs.c2s.com/kernel', module_version: 'v1.0.0', is_active: true },
+            { solution_module_id: 'SM010', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_FIN', module_name: 'Agentic Finance', description: 'Financial management and reporting automation', module_lead: 'James Park', module_lead_email: 'james.park@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-finance', module_version: 'v1.1.0', is_active: true },
+            { solution_module_id: 'SM011', solution_code: 'AES', solution_name: 'Agentic ERP & Shared Services', module_code: 'AGNT_PROC', module_name: 'Agentic Procurement', description: 'Procurement and vendor management with AI', module_lead: 'Karen Wilson', module_lead_email: 'karen.wilson@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-procurement', module_version: 'v1.0.0', is_active: true },
+            { solution_module_id: 'SM012', solution_code: 'ACM', solution_name: 'Agentic CRM & Marketer', module_code: 'AGNT_MKT', module_name: 'Agentic Marketer', description: 'Marketing automation and campaign intelligence', module_lead: 'Nina Patel', module_lead_email: 'nina.patel@claaas2saas.com', documentation_url: 'https://docs.c2s.com/agentic-marketer', module_version: 'v1.3.0', is_active: true },
         ],
 
         // Table 2: OrganizationDB_Security_User
@@ -59,6 +59,12 @@ const Store = (() => {
             { audit_session_id: 'AS004', entra_email_id: 'admin@lithan.com', user_id: 'admin@lithan.com', session_start_time: '2025-12-13T14:20:00', session_end_time: '2025-12-13T18:30:00', ip_address: '192.168.1.98', device_info: 'Firefox 121.0 / Ubuntu 22.04 / Desktop', location: 'Singapore', solution_module_id: 'SM009', session_token_id: 'SESS_TKN_004', is_success: true, reason: '' },
         ],
 
+        // Table 7: Access Requests (ECC locked app flow)
+        access_requests: [],
+
+        // Table 8: Notifications (admin routing)
+        notifications: [],
+
         // Table 6: SecurityDB_Audit_Action_Log
         audit_actions: [
             { audit_action_id: 'AA001', audit_session_id: 'AS001', entra_email_id: 'alice.johnson@lithan.com', action_timestamp: '2025-12-14T08:35:00', solution_module_id: 'SM001', action_name: 'RoleAssignment', permission_code: 'ROLE_ASSIGN', action_status: 'Success', additional_info: 'Assigned Contributor role to Bob Smith for AGNT_TLNT' },
@@ -73,6 +79,33 @@ const Store = (() => {
     function initDB() {
         if (!localStorage.getItem(STORAGE_KEY)) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_DATA));
+            return;
+        }
+        // Migration: ensure KNL module displays as "Kernel Apps" (not "Kernel")
+        const db = getDB();
+        const mods = db.solutions_modules || [];
+        const knl = mods.find(m => m.module_code === 'KNL');
+        if (knl && knl.module_name === 'Kernel') {
+            knl.module_name = 'Kernel Apps';
+            saveDB(db);
+        }
+        // Migration: backfill module_lead_email for existing modules
+        const leadToEmail = { 'John Smith': 'john.smith@claaas2saas.com', 'Sarah Johnson': 'sarah.johnson@claaas2saas.com', 'Michael Chen': 'michael.chen@claaas2saas.com', 'Emily Rodriguez': 'emily.rodriguez@claaas2saas.com', 'David Lee': 'david.lee@claaas2saas.com', 'Lisa Wang': 'lisa.wang@claaas2saas.com', 'Tom Harris': 'tom.harris@claaas2saas.com', 'Rachel Kim': 'rachel.kim@claaas2saas.com', 'Rabiul Hossain': 'rabiul.hossain@claaas2saas.com', 'James Park': 'james.park@claaas2saas.com', 'Karen Wilson': 'karen.wilson@claaas2saas.com', 'Nina Patel': 'nina.patel@claaas2saas.com' };
+        let needsSave = false;
+        mods.forEach(m => {
+            if (m.module_lead && !m.module_lead_email && leadToEmail[m.module_lead]) {
+                m.module_lead_email = leadToEmail[m.module_lead];
+                needsSave = true;
+            }
+        });
+        if (needsSave) saveDB(db);
+        if (!db.access_requests) {
+            db.access_requests = [];
+            saveDB(db);
+        }
+        if (!db.notifications) {
+            db.notifications = [];
+            saveDB(db);
         }
     }
 
@@ -166,6 +199,24 @@ const Store = (() => {
         });
     }
 
+    function isModuleAdmin(email, moduleId) {
+        const userRoles = getWhere('user_roles', r => r.entra_email_id === email && r.solution_module_id === moduleId && r.is_active);
+        const rolePermissions = getAll('role_permissions');
+        return userRoles.some(r => {
+            const perm = rolePermissions.find(p => p.sec_role_id === r.sec_role_id);
+            return perm && perm.sec_role_code === 'ADMIN';
+        });
+    }
+
+    function getModuleAdmins(moduleId) {
+        const userRoles = getWhere('user_roles', r => r.solution_module_id === moduleId && r.is_active);
+        const rolePermissions = getAll('role_permissions');
+        return userRoles.filter(r => {
+            const perm = rolePermissions.find(p => p.sec_role_id === r.sec_role_id);
+            return perm && perm.sec_role_code === 'ADMIN';
+        }).map(r => ({ entra_email_id: r.entra_email_id }));
+    }
+
     function getRolePermission(secRoleId) {
         return getById('role_permissions', 'sec_role_id', secRoleId);
     }
@@ -201,7 +252,7 @@ const Store = (() => {
     return {
         getAll, getById, getWhere, add, update, remove,
         generateId, getSolutions, getUserRolesForUser,
-        isGlobalAdmin, getRolePermission,
+        isGlobalAdmin, isModuleAdmin, getModuleAdmins, getRolePermission,
         logSession, logAction, resetDB, getDB
     };
 })();

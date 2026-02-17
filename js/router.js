@@ -10,6 +10,8 @@ const Router = (() => {
         'login':             () => LoginPage.render(),
         'first-time':        () => PlaceholderPage.render('first-time'),
         'ecc':               () => ECCPage.render(),
+        'access-request':    () => AccessRequestPage.render(),
+        'admin-access-requests': () => AdminAccessRequestsPage.render(),
         'kernel-dashboard':  () => DashboardPage.render(),
         'scc-dashboard':     () => SCCDashboardPage.render(),
         'module-mgmt':       () => ModuleMgmtPage.render(),

@@ -52,7 +52,16 @@ const ModuleMgmtPage = (() => {
                                     <td><span class="code-badge module-code">${m.module_code}</span></td>
                                     <td><strong>${m.module_name}</strong></td>
                                     <td class="desc-cell">${m.description.substring(0, 40)}...</td>
-                                    <td>${m.module_lead || '-'}</td>
+                                    <td>
+                                        ${m.module_lead ? `
+                                            <span
+                                                class="module-lead-link"
+                                                data-email="${(m.module_lead_email || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;')}"
+                                            >
+                                                ${m.module_lead}
+                                            </span>
+                                        ` : '-'}
+                                    </td>
                                     <td><span class="version-badge">${m.module_version}</span></td>
                                     <td>${m.documentation_url ? '<a href="#" class="link-btn"><i class="fas fa-external-link-alt"></i> View</a>' : '-'}</td>
                                     <td class="actions-cell">
@@ -220,6 +229,27 @@ const ModuleMgmtPage = (() => {
             render();
         }
     }
+
+    // Event delegation: copy module lead email to clipboard (registered once)
+    document.addEventListener('click', function (e) {
+        const target = e.target.closest('.module-lead-link');
+        if (!target) return;
+
+        const email = target.getAttribute('data-email');
+
+        if (!email) {
+            Components.showToast('No email available', 'info');
+            return;
+        }
+
+        navigator.clipboard.writeText(email)
+            .then(() => {
+                Components.showToast('Email copied to clipboard', 'success');
+            })
+            .catch(() => {
+                Components.showToast('Failed to copy email', 'error');
+            });
+    });
 
     return { render, showAddModal, showEditModal, onSolutionChange, saveModule, updateModule, deleteModule };
 })();

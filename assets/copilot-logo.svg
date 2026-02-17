@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="copilotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00AEFF"/>
+      <stop offset="25%" stop-color="#8a50d8"/>
+      <stop offset="50%" stop-color="#ee5091"/>
+      <stop offset="75%" stop-color="#fc7942"/>
+      <stop offset="100%" stop-color="#52B471"/>
+    </linearGradient>
+  </defs>
+  <!-- Microsoft Copilot - ribbon loop (stroke, rounded) -->
+  <path d="M12 4 C 20 4 20 12 12 12 C 4 12 4 20 12 20 C 20 20 20 12 12 12" 
+        fill="none" stroke="url(#copilotGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

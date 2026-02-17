@@ -67,7 +67,16 @@ const UserProfilePage = (() => {
                                     <td class="email-cell">${u.entra_email_id}</td>
                                     <td><strong>${u.display_name}</strong></td>
                                     <td>${u.org_role}</td>
-                                    <td>${u.manager_name || '-'}</td>
+                                    <td>
+                                        ${u.manager_name ? `
+                                            <span
+                                                class="module-lead-link"
+                                                data-email="${(u.manager_email_id || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;')}"
+                                            >
+                                                ${u.manager_name}
+                                            </span>
+                                        ` : '-'}
+                                    </td>
                                     <td><span class="status-badge ${u.is_active ? 'active' : 'inactive'}">${u.is_active ? 'Active' : 'Inactive'}</span></td>
                                     <td class="actions-cell">
                                         <button class="icon-btn edit" onclick="UserProfilePage.showEditModal('${u.user_id}')" title="Edit"><i class="fas fa-pen"></i></button>
