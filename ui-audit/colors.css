@@ -1,0 +1,67 @@
+/**
+ * Kernel Prototype Color Variables
+ * Extracted from css/styles.css
+ * Use in React/CSS for consistent theming
+ */
+
+:root {
+  /* Brand */
+  --color-brand-primary: #193e6b;
+  --color-brand-primary-hover: #142a53;
+  --color-brand-accent: #B3A125;
+
+  /* Background */
+  --color-bg-page: #EEE7E0;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-readonly: #f5f5f5;
+
+  /* Primary / Secondary */
+  --color-primary: #193e6b;
+  --color-secondary: #448E9D;
+  --color-accent: #B3A125;
+
+  /* Semantic */
+  --color-success: #5F8025;
+  --color-warning: #E9AC53;
+  --color-danger: #991547;
+
+  /* Text */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-hint: #888888;
+  --color-text-link: #0078d4;
+
+  /* Border */
+  --color-border-default: rgba(0, 0, 0, 0.12);
+  --color-border-light: rgba(0, 0, 0, 0.08);
+  --color-border-input: #d0d4da;
+  --color-border-focus: #B3A125;
+
+  /* Badge backgrounds (opacity) */
+  --color-badge-success-bg: rgba(95, 128, 37, 0.12);
+  --color-badge-success-text: #5F8025;
+  --color-badge-danger-bg: rgba(153, 21, 71, 0.1);
+  --color-badge-danger-text: #991547;
+  --color-badge-warning-bg: rgba(233, 172, 83, 0.1);
+  --color-badge-warning-text: #E9AC53;
+  --color-badge-secondary-bg: rgba(68, 142, 157, 0.1);
+  --color-badge-secondary-text: #448E9D;
+  --color-badge-accent-bg: rgba(179, 161, 37, 0.1);
+  --color-badge-accent-text: #B3A125;
+
+  /* Toast */
+  --color-toast-success: #2d6b47;
+  --color-toast-error: #7a1f3a;
+
+  /* Extended palette (named tokens from prototype) */
+  --color-midnight: #193e6b;
+  --color-gold: #B3A125;
+  --color-violet: #7F3F98;
+  --color-jelly-blue: #448E9D;
+  --color-sunray: #E9AC53;
+  --color-avocado: #5F8025;
+  --color-violet-red: #991547;
+  --color-beige: #EEE7E0;
+  --color-dark: #333333;
+}

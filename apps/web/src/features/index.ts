@@ -1,0 +1,10 @@
+export { EccPage } from './ecc';
+export { AccessRequestPage } from './access-request';
+export { KernelDashboardPage } from './kernel-dashboard';
+export { SccDashboardPage } from './scc-dashboard';
+export { ModuleMgmtPage } from './module-mgmt';
+export { UserProfilePage } from './user-profile';
+export { RoleMgmtPage } from './role-mgmt';
+export { UserRoleAssignPage } from './user-role-assign';
+export { AuditLogsPage } from './audit-logs';
+export { PlaceholderPage, FirstTimePage } from './placeholders';

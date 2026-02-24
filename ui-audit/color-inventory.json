@@ -1,0 +1,290 @@
+{
+  "rawColors": [
+    {
+      "value": "#193e6b",
+      "usageCount": 45,
+      "files": ["css/styles.css"],
+      "contexts": ["primary (--midnight)", "top nav background (via --primary)", "brand", "links", "headings", "buttons", "sidebar nav", "focus ring tints"]
+    },
+    {
+      "value": "#B3A125",
+      "usageCount": 28,
+      "files": ["css/styles.css"],
+      "contexts": ["accent (--gold)", "login icon", "focus ring (rgba 179,161,37)", "active sidebar highlight", "badge backgrounds", "chart/gauge"]
+    },
+    {
+      "value": "#7F3F98",
+      "usageCount": 8,
+      "files": ["css/styles.css"],
+      "contexts": ["violet", "SCC card accent", "chart bar fill (metric-violet)"]
+    },
+    {
+      "value": "#448E9D",
+      "usageCount": 22,
+      "files": ["css/styles.css"],
+      "contexts": ["secondary (--jelly-blue)", "ACC card accent", "filter active icon", "manage button", "role bars", "module code badge", "chart bars"]
+    },
+    {
+      "value": "#E9AC53",
+      "usageCount": 12,
+      "files": ["css/styles.css"],
+      "contexts": ["warning (--sunray)", "Helpdesk card accent", "type-badge custom", "audit failed badge"]
+    },
+    {
+      "value": "#5F8025",
+      "usageCount": 15,
+      "files": ["css/styles.css", "js/pages/scc-dashboard.js"],
+      "contexts": ["success (--avocado)", "status badge active", "role badge contributor", "chart ring stroke (compliance >=80)"]
+    },
+    {
+      "value": "#991547",
+      "usageCount": 18,
+      "files": ["css/styles.css", "js/pages/scc-dashboard.js"],
+      "contexts": ["danger (--violet-red)", "role admin badge", "status inactive", "chart ring stroke (compliance <60)"]
+    },
+    {
+      "value": "#EEE7E0",
+      "usageCount": 4,
+      "files": ["css/styles.css"],
+      "contexts": ["page background (--beige)", "login user button bg"]
+    },
+    {
+      "value": "#FFFFFF",
+      "usageCount": 35,
+      "files": ["css/styles.css"],
+      "contexts": ["surface (--white)", "cards", "sidebar", "modals", "inputs", "brand text on dark"]
+    },
+    {
+      "value": "#333333",
+      "usageCount": 22,
+      "files": ["css/styles.css"],
+      "contexts": ["body text (--dark)", "headings default", "table content"]
+    },
+    {
+      "value": "#112c4e",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["login gradient start"]
+    },
+    {
+      "value": "#1f4d82",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["login gradient end"]
+    },
+    {
+      "value": "#f5f5f5",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["readonly input background"]
+    },
+    {
+      "value": "#666666",
+      "usageCount": 18,
+      "files": ["css/styles.css"],
+      "contexts": ["login subtitle", "muted text", "ecc header", "filter tabs", "pill default", "desc cell", "perm info"]
+    },
+    {
+      "value": "#999999",
+      "usageCount": 22,
+      "files": ["css/styles.css"],
+      "contexts": ["placeholder", "muted text", "icon muted", "empty state", "char count", "module badge locked", "copilot ghost cursor"]
+    },
+    {
+      "value": "#888888",
+      "usageCount": 12,
+      "files": ["css/styles.css"],
+      "contexts": ["search icon", "nav badge icon", "table count", "ring label", "scc audit table header"]
+    },
+    {
+      "value": "#555555",
+      "usageCount": 6,
+      "files": ["css/styles.css"],
+      "contexts": ["secondary button text", "nav role badge", "role bar label", "metric name"]
+    },
+    {
+      "value": "#777777",
+      "usageCount": 5,
+      "files": ["css/styles.css"],
+      "contexts": ["filter btn default", "scc subtitle", "audit detail"]
+    },
+    {
+      "value": "#e0e0e0",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["ecc section divider"]
+    },
+    {
+      "value": "#f0f2f5",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["nav search role badge background"]
+    },
+    {
+      "value": "#e0e3e8",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["nav search role badge border"]
+    },
+    {
+      "value": "#0078d4",
+      "usageCount": 6,
+      "files": ["css/styles.css"],
+      "contexts": ["env learn more link", "env panel focus", "env filter btn", "env acc active", "env check icon"]
+    },
+    {
+      "value": "#d0d4da",
+      "usageCount": 3,
+      "files": ["css/styles.css"],
+      "contexts": ["env panel search input border"]
+    },
+    {
+      "value": "#eeeeee",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["env accordion header border"]
+    },
+    {
+      "value": "#142a53",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["primary button hover background"]
+    },
+    {
+      "value": "#3a7d8a",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["secondary/accent button hover background"]
+    },
+    {
+      "value": "#2d6b47",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["toast success background"]
+    },
+    {
+      "value": "#7a1f3a",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["toast error background"]
+    },
+    {
+      "value": "#2563eb",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["module lead link color"]
+    },
+    {
+      "value": "#b07a1a",
+      "usageCount": 1,
+      "files": ["css/styles.css"],
+      "contexts": ["audit failed badge text (darker variant of warning)"]
+    },
+    {
+      "value": "#00AEFF",
+      "usageCount": 1,
+      "files": ["assets/copilot-logo.svg"],
+      "contexts": ["copilot logo gradient stop 0%"]
+    },
+    {
+      "value": "#8a50d8",
+      "usageCount": 1,
+      "files": ["assets/copilot-logo.svg"],
+      "contexts": ["copilot logo gradient stop 25%"]
+    },
+    {
+      "value": "#ee5091",
+      "usageCount": 1,
+      "files": ["assets/copilot-logo.svg"],
+      "contexts": ["copilot logo gradient stop 50%"]
+    },
+    {
+      "value": "#fc7942",
+      "usageCount": 1,
+      "files": ["assets/copilot-logo.svg"],
+      "contexts": ["copilot logo gradient stop 75%"]
+    },
+    {
+      "value": "#52B471",
+      "usageCount": 1,
+      "files": ["assets/copilot-logo.svg"],
+      "contexts": ["copilot logo gradient stop 100%"]
+    },
+    {
+      "value": "#191970",
+      "usageCount": 1,
+      "files": ["src/components/CopilotIcon.tsx"],
+      "contexts": ["CopilotIcon border default"]
+    },
+    {
+      "value": "#2196F3",
+      "usageCount": 1,
+      "files": ["src/components/CopilotIcon.tsx"],
+      "contexts": ["CopilotIcon gradient stop 0%"]
+    },
+    {
+      "value": "#9C27B0",
+      "usageCount": 1,
+      "files": ["src/components/CopilotIcon.tsx"],
+      "contexts": ["CopilotIcon gradient stop 50%"]
+    },
+    {
+      "value": "#00BCD4",
+      "usageCount": 1,
+      "files": ["src/components/CopilotIcon.tsx"],
+      "contexts": ["CopilotIcon gradient stop 100%"]
+    }
+  ],
+  "rgbaColors": [
+    {"value": "rgba(0, 0, 0, 0.05)", "contexts": ["shadow", "table header", "row hover"]},
+    {"value": "rgba(0, 0, 0, 0.08)", "contexts": ["shadow-lg", "input borders", "dividers"]},
+    {"value": "rgba(0, 0, 0, 0.12)", "contexts": ["input default border", "scrollbar thumb"]},
+    {"value": "rgba(179, 161, 37, 0.15)", "contexts": ["focus ring", "geo shape", "filter active border"]},
+    {"value": "rgba(179, 161, 37, 0.2)", "contexts": ["login geo shape border"]},
+    {"value": "rgba(179, 161, 37, 0.25)", "contexts": ["geo shape", "module card hover border"]},
+    {"value": "rgba(179, 161, 37, 0.3)", "contexts": ["geo shape"]},
+    {"value": "rgba(179, 161, 37, 0.08)", "contexts": ["login user btn hover"]},
+    {"value": "rgba(179, 161, 37, 0.1)", "contexts": ["nav child active", "filter active bg", "placeholder badge"]},
+    {"value": "rgba(25, 62, 107, 0.06)", "contexts": ["code bg", "dropdown header", "notification hover", "pill hover"]},
+    {"value": "rgba(25, 62, 107, 0.04)", "contexts": ["dropdown header", "dashboard card hover border"]},
+    {"value": "rgba(25, 62, 107, 0.08)", "contexts": ["user badge", "code badge primary"]},
+    {"value": "rgba(25, 62, 107, 0.05)", "contexts": ["audit tab hover", "env acc header hover"]},
+    {"value": "rgba(25, 62, 107, 0.2)", "contexts": ["search focus inset", "copilot input focus"]},
+    {"value": "rgba(25, 62, 107, 0.15)", "contexts": ["module card border", "ecc card border"]},
+    {"value": "rgba(25, 62, 107, 0.25)", "contexts": ["module card hover border"]},
+    {"value": "rgba(25, 62, 107, 0.1)", "contexts": ["module card border"]},
+    {"value": "rgba(25, 62, 107, 0.12)", "contexts": ["copilot input focus glow"]},
+    {"value": "rgba(255, 255, 255, 0.85)", "contexts": ["nav waffle, icon btn on primary"]},
+    {"value": "rgba(255, 255, 255, 0.12)", "contexts": ["nav waffle hover", "env banner hover"]},
+    {"value": "rgba(255, 255, 255, 0.88)", "contexts": ["nav context label"]},
+    {"value": "rgba(255, 255, 255, 0.3)", "contexts": ["nav separator"]},
+    {"value": "rgba(255, 255, 255, 0.7)", "contexts": ["nav env icon"]},
+    {"value": "rgba(255, 255, 255, 0.55)", "contexts": ["nav env label"]},
+    {"value": "rgba(255, 255, 255, 0.1)", "contexts": ["env banner hover"]},
+    {"value": "rgba(0, 120, 212, 0.06)", "contexts": ["env item active", "env filter btn hover"]},
+    {"value": "rgba(0, 0, 0, 0.06)", "contexts": ["nav parent hover", "sidebar divider", "role bar track"]},
+    {"value": "rgba(0, 0, 0, 0.04)", "contexts": ["nav child hover", "filter tabs bg"]},
+    {"value": "rgba(0, 0, 0, 0.02)", "contexts": ["table thead", "env acc header hover"]},
+    {"value": "rgba(0, 0, 0, 0.5)", "contexts": ["modal overlay"]},
+    {"value": "rgba(0, 0, 0, 0.25)", "contexts": ["login card shadow"]},
+    {"value": "rgba(0, 0, 0, 0.3)", "contexts": ["modal box shadow"]},
+    {"value": "rgba(0, 0, 0, 0.15)", "contexts": ["env panel shadow", "tooltip shadow"]},
+    {"value": "rgba(0, 0, 0, 0.18)", "contexts": ["dropdown shadow"]},
+    {"value": "rgba(0, 0, 0, 0.1)", "contexts": ["ecc search border", "filter active shadow"]},
+    {"value": "rgba(255, 255, 255, 0.7)", "contexts": ["filter btn hover bg"]},
+    {"value": "rgba(68, 142, 157, 0.1)", "contexts": ["manage btn", "role collaborator", "type system"]},
+    {"value": "rgba(68, 142, 157, 0.08)", "contexts": ["role collaborator light"]},
+    {"value": "rgba(68, 142, 157, 0.12)", "contexts": ["kpi blue", "module code badge"]},
+    {"value": "rgba(68, 142, 157, 0.04)", "contexts": ["scc audit row hover"]},
+    {"value": "rgba(95, 128, 37, 0.1)", "contexts": ["status active", "role contributor"]},
+    {"value": "rgba(95, 128, 37, 0.12)", "contexts": ["kpi green", "audit success badge"]},
+    {"value": "rgba(153, 21, 71, 0.1)", "contexts": ["status inactive", "role admin"]},
+    {"value": "rgba(153, 21, 71, 0.15)", "contexts": ["role global_admin"]},
+    {"value": "rgba(153, 21, 71, 0.06)", "contexts": ["icon delete hover"]},
+    {"value": "rgba(153, 21, 71, 0.12)", "contexts": ["kpi red", "audit denied badge"]},
+    {"value": "rgba(233, 172, 83, 0.1)", "contexts": ["status warning", "type custom"]},
+    {"value": "rgba(233, 172, 83, 0.15)", "contexts": ["audit failed badge"]},
+    {"value": "rgba(233, 172, 83, 0.12)", "contexts": ["kpi gold"]
+    }
+  ]
+}
